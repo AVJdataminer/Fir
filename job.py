@@ -24,3 +24,8 @@ data_load_state.text("Done! (using st.cache)")
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(data)
+        
+from PIL import Image
+image = Image.open('https://raw.githubusercontent.com/AVJdataminer/HireOne/master/data/Binoy_Dutt_Resume.jpg')
+
+st.image(image, caption='Sunrise by the mountains',use_column_width=True)
