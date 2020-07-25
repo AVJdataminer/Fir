@@ -69,6 +69,6 @@ model.build_vocab(train_data)
 model.train(train_data, total_examples=model.corpus_count, epochs=model.epochs)
 """Let's look at an example of how it converts a list of words to a vector."""
 
-example_str = str(model.infer_vector(['data', 'science','python'])))
+example_str = str(model.infer_vector(['data', 'science','python']))
 st.write("Here's an example of the vectors generated from the list ['data', 'science','python']:")
 st.write(example_str)
