@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.title('Job listings')
+st.title('Job listing resume matcher')
 
 #DATE_COLUMN = 'date/time'
 DATA_URL = ('https://raw.githubusercontent.com/AVJdataminer/HireOne/master/data/job_descriptions.csv')
@@ -21,8 +21,8 @@ data_load_state = st.text('Loading data...')
 data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
 
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
+if st.checkbox('Show job listings data'):
+    st.subheader('Job Listings')
     st.write(data)
         
 from PIL import Image
