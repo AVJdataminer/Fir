@@ -26,6 +26,10 @@ if st.checkbox('Show raw data'):
     st.write(data)
         
 from PIL import Image
-image = Image.open('https://raw.githubusercontent.com/AVJdataminer/HireOne/master/data/Binoy_Dutt_Resume.jpg')
+from PIL import Image
+from urllib.request import urlopen
+
+url = 'https://raw.githubusercontent.com/AVJdataminer/HireOne/master/data/Binoy_Dutt_Resume.jpg'
+image = Image.open(urlopen(url))
 
 st.image(image, caption='Sunrise by the mountains',use_column_width=True)
