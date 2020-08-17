@@ -1,10 +1,10 @@
+import datetime
 import streamlit as st
+from streamlit import caching
 import pandas as pd
-import numpy as np
-import re
-import string
-import matplotlib.pyplot as plt
 import altair as alt
+import os
+ 
 
 st.title('Job listing resume matcher')
 
@@ -24,9 +24,12 @@ data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
 
 st.subheader('Number of issues per day')
-hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=7, range=(0,7))[0]
-st.bar_chart(hist_values)
-
-# Some number in the range 0-23
-hour_to_filter = st.slider('day', 0, 7, 1)
-filtered_data = data[data[DATE_COLUMN].dt.day == hour_to_filter]
+cnt = pd.DataFrame(df.groupby('created_at').size().rename('DA')).reset_index()
+rolling_mean = cnt.DA.rolling(window=7).mean()
+rolling_mean2 = cnt.DA.rolling(window=14).mean()
+plt.figure(figsize=(20,10))
+plt.plot(cnt.created_at, cnt.DA, label='All Issues')
+plt.plot(cnt.created_at, rolling_mean, label='Created Issues 7 Day SMA', color='orange')
+plt.plot(cnt.created_at, rolling_mean2, label='Created Issues 14 Day SMA', color='magenta')
+plt.legend(loc='upper left')
+plt.show()
