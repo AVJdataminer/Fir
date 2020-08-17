@@ -22,7 +22,7 @@ def load_data(nrows):
 data_load_state = st.text('Loading data...')
 data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
-
+df = data
 st.subheader('Number of issues per day')
 cnt = pd.DataFrame(df.groupby('created_at').size().rename('DA')).reset_index()
 rolling_mean = cnt.DA.rolling(window=7).mean()
