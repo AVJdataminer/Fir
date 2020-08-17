@@ -4,7 +4,10 @@ from streamlit import caching
 import pandas as pd
 import altair as alt
 import os
- 
+import matplotlib.pyplot as plt
+import numpy as np
+#%matplotlib inline
+
 
 st.title('Job listing resume matcher')
 
